@@ -34,10 +34,19 @@ def clues(number):
     clue_list = []
     divisible = check_divisible(number)
     clue_list.append(divisible)
-    multiple = "    Number is multiple of ", number * 2
-    clue_list.append(multiple)
+    even_odd = check_even_odd(number)
+    clue_list.append(even_odd)
     return clue_list
 
+def check_even_odd(number):
+    '''
+    method for checking whether number
+    is even or odd
+    '''
+    if number % 2 == 0:
+        return "\n|\t Number is even"
+    else:
+        return "\n|\t Number is odd"
 
 def check_divisible(number):
     '''
@@ -79,7 +88,6 @@ time.sleep(2)
 print("\n|\t Yes..Good to go.. Your turn to guess")
 print("\n|\t Here is the 1st clue: ")
 print(random.choice(clues(random_first)))
-print(random_first)
 try:
     print("\n|\t Please enter the guess:")
     guess_number_one = int(input())
@@ -90,7 +98,8 @@ except ValueError:
 
 if not guess_check(random_first, guess_number_one):
     print("\n\n|\t Oopss..Wrong guess..")
-    score -= 5
+    if score > 0:
+        score -= 5
     print("\n|\t Here is the 2nd clue:", greater_or_lower(random_first))
     print("\n|\t Please enter the guess2:")
     guess_chance_two = int(input())
@@ -99,13 +108,13 @@ if not guess_check(random_first, guess_number_one):
 random_second = random_number("2nd")
 print("\n|\t Here is the 2nd clue: ")
 print(random.choice(clues(random_second)))
-print(random_second)
 print("\n|\t Please enter the guess:")
 guess_number_two = int(input())
 
 if not guess_check(random_second, guess_number_two):
     print("\n\n|\t Oopss..Wrong guess..")
-    score -= 5
+    if score > 0:
+        score -= 5
     print("\n|\t Here is the 2nd clue:", greater_or_lower(random_second))
     print("\n|\t Please enter the guess2:")
     guess_chance_two = int(input())
@@ -114,13 +123,13 @@ if not guess_check(random_second, guess_number_two):
 random_third = random_number("3rd")
 print("\n|\t Here is the 3rd clue: ")
 print(random.choice(clues(random_third)))
-print(random_third)
 print("\n|\t Please enter the guess:")
 guess_number_three = int(input())
 
 if not guess_check(random_third, guess_number_three):
     print("\n\n|\t Oopss..Wrong guess..")
-    score -= 5
+    if score > 0:
+        score -= 5
     print("\n|\t Here is the 2nd clue:", greater_or_lower(random_third))
     print("\n|\t Please enter the guess2:")
     guess_chance_two = int(input())
